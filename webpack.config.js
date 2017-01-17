@@ -18,7 +18,7 @@ const webpackConfig = {
         loader: 'eslint-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react'],
+          presets: ['es2015', 'react', 'stage-2'],
         },
       },
     ],
@@ -28,7 +28,7 @@ const webpackConfig = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react'],
+          presets: ['es2015', 'react', 'stage-2'],
         },
       },
       {
@@ -37,8 +37,8 @@ const webpackConfig = {
           'style',
           'css',
           'autoprefixer?browsers=last 3 versions',
-          'sass?outputStyle=expanded'
-        ]
+          'sass?outputStyle=expanded',
+        ],
       },
     ],
   },

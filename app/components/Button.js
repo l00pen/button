@@ -6,34 +6,54 @@ class Button extends React.Component {
     super();
     this.state = {
       hover: false,
-      loading: false,
+      showLoading: false,
+      showSuccess: false,
     };
 
     this.onClick = this.onClick.bind(this);
   }
 
   onClick() {
-    if (!this.state.loading) {
+    if (!this.state.showLoading) {
       this.setState({
-        loading: true,
+        showLoading: true,
       });
       setTimeout(() => {
         this.setState({
-          loading: false,
+          showLoading: false,
+          showSuccess: true,
+        }, () => {
+          setTimeout(() => {
+            this.setState({
+              showSuccess: false,
+            });
+          }, 2000);
         });
-      }, 3000);
+      }, 1000);
     }
   }
 
   render() {
-    const { loading } = this.state;
-    const label = loading ? 'loading' : 'Click me';
+    const { showLoading, showSuccess } = this.state;
+    // const showLabel = !showLoading && !showSuccess;
+    const label = 'Click me';
+    const buttonClass = showSuccess ? 'success' : '';
     return (
       <button
-        className="button"
+        className={`button action-button ${buttonClass}`}
         onClick={this.onClick}
       >
-        {label}
+        <div className="object-wrapper flex">
+          { showLoading &&
+            <div className={'object circle'} />
+          }
+          { showSuccess &&
+            <div className={'object checkMark'} />
+          }
+          { !showLoading &&
+            <p className="action-button-label">{label}</p>
+          }
+        </div>
       </button>
     );
   }
