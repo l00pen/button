@@ -37,7 +37,6 @@ class Button extends React.Component {
 
   render() {
     const { children, onClick, className } = this.props;
-    console.log(className)
     return (
       <button
         className={cx('button', className, { hover: this.state.hover })}

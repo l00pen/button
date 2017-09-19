@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Store from './store';
 
-import { Button } from './components/index.js';
+import {
+  Button,
+  ButtonCSS,
+} from './components/index.js';
 
 import './css/master.css';
 
@@ -26,6 +29,7 @@ class App extends React.Component {
   }
 
   clickCSSHandler() {
+    console.log('clicked')
     // faking an async success request
     this.setState({
       buttonCSS: {
@@ -56,6 +60,12 @@ class App extends React.Component {
             <span>{'Click me!'}</span>
           </Button>
           <p>Animation with css</p>
+          <ButtonCSS
+            label={'Click me!'}
+            loading={this.state.buttonCSS.loading}
+            success={this.state.buttonCSS.success}
+            onClick={this.clickCSSHandler}
+          />
           <p>Animation with javaScript</p>
         </div>
       </Provider>

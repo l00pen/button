@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-import './Button.css';
+import Button from './Button';
+
+import './ButtonCSS.css';
 
 const SUCCESS_ANIMATION_LENGTH = 2000;
 
@@ -29,15 +32,14 @@ class ButtonCSS extends React.Component {
   }
 
   render() {
-    const { label, loading } = this.props;
+    const { label, loading, onClick } = this.props;
     const { showSuccess } = this.state;
-    const buttonClass = showSuccess ? 'success' : '';
     return (
-      <button
-        className={`button action-button ${buttonClass}`}
-        onClick={this.props.onClick}
+      <Button
+        className={cx({ success: showSuccess })}
+        onClick={onClick}
       >
-        <div className="object-wrapper flex">
+        <div className="object-wrapper">
           { loading &&
             <div className={'object circle'} />
           }
@@ -45,10 +47,10 @@ class ButtonCSS extends React.Component {
             <div className={'object checkMark'} />
           }
           { !loading &&
-            <p className="action-button-label">{label}</p>
+            <span className={cx('label', { success: showSuccess })}>{label}</span>
           }
         </div>
-      </button>
+      </Button>
     );
   }
 }
