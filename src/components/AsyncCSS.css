@@ -17,7 +17,7 @@
   }
 }
 
-.object-wrapper {
+.container {
   min-height: 1rem;
   min-width: 1rem;
   align-items: center;
@@ -26,7 +26,7 @@
   display: flex;
 }
 
-.object {
+.async-container {
   width: 1rem;
   height: 1rem;
   margin: 0 auto;
@@ -34,8 +34,8 @@
   vertical-align: middle;
 }
 
-.object::before,
-.object::after {
+.async-container::before,
+.async-container::after {
   box-sizing: border-box;
   content: '';
   position: absolute;
@@ -43,7 +43,7 @@
   height: 100%;
 }
 
-.circle {
+.loading {
   background-color: transparent;
   outline: 1px solid transparent; /* firefox */
   animation: spin 1s infinite linear;
@@ -51,7 +51,7 @@
   transition: all 1s ease-in;
 }
 
-.circle::before {
+.loading::before {
   border-radius: 50%;
   border: 0.2rem solid transparent;
   border-top-color: coral;
@@ -59,42 +59,36 @@
   top: 0;
 }
 
-.checkMark {
+.success {
   background-color: transparent;
   transform: rotate(50deg);
   transition: all 1s ease-in;
   width: 1.3rem;
 }
 
-.checkMark::before,
-.checkMark::after {
+.success::before,
+.success::after {
   border: 0.1rem solid transparent; 
   height: 0;
   width: 0;
 }
 
-.checkMark::before {
+.success::before {
   left: 20%;
   bottom: 20%;
   animation: width 0.25s ease-out 0s;
   animation-fill-mode: both;
 }
 
-.checkMark::after {
+.success::after {
   bottom: 20%;
   right: 42%;
   animation: height 0.25s ease-in 0.25s;
   animation-fill-mode: both;
 }
 
-.success {
-  background-color: #19988c;
-  transition: all 0.5s ease-in;
-}
-
 .label {
   margin: 0px;
-  font-size: 1rem;
   opacity: 1;
   transition: font-size 0s ease-in 0.25s,
               opacity 0.3s ease-in 0.25s;

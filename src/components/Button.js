@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import './Button.css';
+import * as styles from './Button.css';
 
 class Button extends React.Component {
   static defaultProps = {
@@ -39,7 +39,7 @@ class Button extends React.Component {
     const { children, onClick, className } = this.props;
     return (
       <button
-        className={cx('button', className, { hover: this.state.hover })}
+        className={cx(styles.button, className, { [styles.hover]: this.state.hover })}
         onClick={onClick}
         onMouseEnter={this.mouseEnterHandler}
         onMouseLeave={this.mouseLeaveHandler}

@@ -1,11 +1,3 @@
-$size: 25;
-$loadingHeight: $size+px;
-$loadingWidth: $size+px;
-$borderWidth: $size / 10 + px;
-
-$loadingColor: coral;
-$checkMarkColor: white;
-
 .action-button {
   color: coral;
   transition: all 0.2s ease-in;
@@ -28,4 +20,9 @@ $checkMarkColor: white;
   opacity: 0;
   font-size: 0px;
   transition: all 1s ease-in;
+}
+
+.success {
+  background-color: #19988c;
+  transition: all 0.5s ease-in;
 }

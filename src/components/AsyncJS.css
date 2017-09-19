@@ -1,0 +1,108 @@
+.animate-object-wrapper {
+  min-height: 1rem;
+  min-width: 1rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.success {
+  background-color: #004d5f;
+  transition: all 0.5s ease-in;
+}
+
+.animate-object {
+  width: 1rem;
+  height: 1rem;
+  margin: 0 auto;
+  position: relative;
+  vertical-align: middle;
+}
+
+.animate-object::before,
+.animate-object::after {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.animate-circle {
+  background-color: transparent;
+  outline: 1px solid transparent; /* firefox */
+  transition: all 1s ease-in;
+}
+
+.animate-circle::before {
+  border-radius: 50%;
+  border: 0.1rem solid transparent;
+  border-bottom-color: coral;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.animate-circle.animation-start {
+  animation: spin 1s infinite linear;
+  animation-fill-mode: both;
+}
+
+.animate-circle.animation-end {
+  animation: spinEnd 0.2s 1 linear;
+  animation-fill-mode: both;
+}
+
+.animate-circle.animation-end::before {
+  animation: width 0.5s ease-out 0.2s;
+  animation-fill-mode: both;
+}
+
+.animate-circle.animation-end::after {
+  width: 100%;
+  height: 0;
+  right: 44%;
+  bottom: 0;
+  border: 0.1rem solid transparent;
+  animation: height 0.5s ease-in 0.2s;
+  animation-fill-mode: both;
+}
+
+@keyframes width {
+  0% {
+    border-radius: 50%;
+    border: 0.1rem solid transparent;
+    border-bottom-color: coral;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  100% {
+    bottom: 0px;
+    top: initial;
+    left: 4px;
+    width: 40%;
+    border-bottom-color: coral;
+    border-radius: 0;
+  }
+}
+
+@keyframes height {
+  to {
+    height: 80%;
+    border-right-color: coral;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinEnd {
+  to {
+    transform: rotate(50deg);
+  }
+}

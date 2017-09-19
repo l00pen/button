@@ -9,8 +9,14 @@
   color: aliceblue;
   cursor: pointer;
   box-sizing: border-box;
+  font-size: inherit;
+  line-height: 1;
 }
 
 .hover {
-  background-color: orange;
+  color: brown;
+}
+
+.button:focus {
+  outline: none;
 }

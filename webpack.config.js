@@ -32,7 +32,14 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: true,
+              localIdentName: '[path][name]__[local]',
+            },
+          },
           'postcss-loader',
         ],
       },
