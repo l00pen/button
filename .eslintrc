@@ -3,13 +3,16 @@
   "env": {
     "browser": true,
     "node": true,
-    "jasmine": true
   },
+  "plugins": [
+    "babel"
+  ],
   "settings": {
     import/resolver: "webpack"
   },
   "rules": {
     "react/jsx-filename-extension": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "class-property/rule-name": 0
   }
 }

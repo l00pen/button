@@ -8,12 +8,12 @@ $checkMarkColor: white;
 
 .action-button {
   color: coral;
-  transition: all 0.5s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .action-button.success {
   background-color: #19988c;
-  transition: all 1s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .action-button-label {
@@ -92,7 +92,7 @@ $checkMarkColor: white;
 
   &::after {
     bottom: 20%;
-    right: 40%;
+    right: 42%;
     animation: height 0.25s ease-in 0.25s;
     animation-fill-mode: both;
   }

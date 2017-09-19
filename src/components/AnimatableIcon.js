@@ -1,13 +1,13 @@
 import React from 'react';
-import './AnimatableIcon.scss';
+// import './AnimatableIcon.scss';
 
 class Button extends React.Component {
   constructor() {
     super();
     this.state = {
       showLoading: false,
-      showSuccess: true,
-      spinnClass: 'animationEnd',
+      showSuccess: false,
+      spinnClass: '',
     };
 
     this.onClick = this.onClick.bind(this);
@@ -15,7 +15,7 @@ class Button extends React.Component {
 
   componentDidUpdate() {
     if (this.circle) {
-      this.circle.addEventListener('animationiteration', (e) => {
+      this.circle.addEventListener('animationiteration', () => {
         if (!this.state.showLoading) {
           this.setState({
             showSuccess: true,
@@ -54,7 +54,7 @@ class Button extends React.Component {
     const buttonClass = showSuccess ? 'success' : '';
     return (
       <button
-        className={`button action-button`}
+        className={`button action-button animate-action-button ${buttonClass}`}
         onClick={this.onClick}
       >
         <div className="animate-object-wrapper flex">
