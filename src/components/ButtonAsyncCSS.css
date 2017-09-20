@@ -5,14 +5,14 @@
 
 @keyframes width {
   to {
-    width: 40%;
+    width: 0.5em;
     border-bottom-color: #fff;
   }
 }
 
 @keyframes height {
   to {
-    height: 100%;
+    height: 1em;
     border-right-color: #fff;
   }
 }
@@ -23,8 +23,8 @@
 }
 
 .container {
-  min-height: 1rem;
-  min-width: 1rem;
+  min-height: 1em;
+  min-width: 1em;
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -32,8 +32,8 @@
 }
 
 .async-container {
-  width: 1rem;
-  height: 1rem;
+  width: 1em;
+  height: 1em;
   margin: 0 auto;
   position: relative;
   vertical-align: middle;
@@ -50,7 +50,6 @@
 
 .loading-icon {
   background-color: transparent;
-  outline: 1px solid transparent; /* firefox */
   animation: spin 1s infinite linear;
   animation-fill-mode: both;
   transition: all 1s ease-in;
@@ -58,7 +57,7 @@
 
 .loading-icon::before {
   border-radius: 50%;
-  border: 0.1rem solid transparent;
+  border: 0.125em solid transparent;
   border-top-color: coral;
   left: 0;
   top: 0;
@@ -66,28 +65,30 @@
 
 .success-icon {
   background-color: transparent;
-  transform: rotate(50deg);
+  transform: rotate(45deg);
   transition: all 1s ease-in;
-  width: 1.3rem;
+  width: 1em;
+  height: 1em;
 }
 
 .success-icon::before,
 .success-icon::after {
-  border: 0.1rem solid transparent; 
+  border: solid transparent;
+  border-width: 0 0.125em 0.125em 0;
   height: 0;
   width: 0;
 }
 
 .success-icon::before {
-  left: 20%;
-  bottom: 20%;
+  left: 0.25em;
+  bottom: 0.125em;
   animation: width 0.25s ease-out 0s;
   animation-fill-mode: both;
 }
 
 .success-icon::after {
-  bottom: 20%;
-  right: 42%;
+  bottom: 0.125em;
+  right: 0.25em;
   animation: height 0.25s ease-in 0.25s;
   animation-fill-mode: both;
 }
