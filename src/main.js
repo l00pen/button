@@ -4,10 +4,9 @@ import { Provider } from 'react-redux';
 import Store from './store';
 
 import {
-  AsyncCSS,
-  AsyncJS,
   Button,
-  ButtonAsync,
+  ButtonAsyncCSS,
+  ButtonAsyncJS,
 } from './components';
 
 import './css/master.css';
@@ -118,25 +117,19 @@ class App extends React.Component {
             <span>{this.state.button.label}</span>
           </Button>
           <p>Button with success animation with only react and css</p>
-          <ButtonAsync
+          <ButtonAsyncCSS
             onClick={this.clickCSSHandler}
             success={this.state.buttonCSS.success}
-          >
-            <AsyncCSS
-              label={this.state.buttonCSS.label}
-              loading={this.state.buttonCSS.loading}
-            />
-          </ButtonAsync>
+            label={this.state.buttonCSS.label}
+            loading={this.state.buttonCSS.loading}
+          />
           <p>Button with success animation with animation event</p>
-          <ButtonAsync
+          <ButtonAsyncJS
+            label={'Click me!'}
+            loading={this.state.buttonJS.loading}
             onClick={this.clickJSHandler}
             success={this.state.buttonJS.success}
-          >
-            <AsyncJS
-              label={'Click me!'}
-              loading={this.state.buttonJS.loading}
-            />
-          </ButtonAsync>
+          />
         </div>
       </Provider>
     );

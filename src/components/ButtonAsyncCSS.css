@@ -17,6 +17,11 @@
   }
 }
 
+.success {
+  background-color: #19988c;
+  transition: all 0.5s ease-in;
+}
+
 .container {
   min-height: 1rem;
   min-width: 1rem;
@@ -43,7 +48,7 @@
   height: 100%;
 }
 
-.loading {
+.loading-icon {
   background-color: transparent;
   outline: 1px solid transparent; /* firefox */
   animation: spin 1s infinite linear;
@@ -51,36 +56,36 @@
   transition: all 1s ease-in;
 }
 
-.loading::before {
+.loading-icon::before {
   border-radius: 50%;
-  border: 0.2rem solid transparent;
+  border: 0.1rem solid transparent;
   border-top-color: coral;
   left: 0;
   top: 0;
 }
 
-.success {
+.success-icon {
   background-color: transparent;
   transform: rotate(50deg);
   transition: all 1s ease-in;
   width: 1.3rem;
 }
 
-.success::before,
-.success::after {
+.success-icon::before,
+.success-icon::after {
   border: 0.1rem solid transparent; 
   height: 0;
   width: 0;
 }
 
-.success::before {
+.success-icon::before {
   left: 20%;
   bottom: 20%;
   animation: width 0.25s ease-out 0s;
   animation-fill-mode: both;
 }
 
-.success::after {
+.success-icon::after {
   bottom: 20%;
   right: 42%;
   animation: height 0.25s ease-in 0.25s;
@@ -90,8 +95,8 @@
 .label {
   margin: 0px;
   opacity: 1;
-  transition: font-size 0s ease-in 0.25s,
-              opacity 0.3s ease-in 0.25s;
+  transition: font-size 0s ease-in,
+              opacity 0.3s ease-in;
 }
 
 .label.success {

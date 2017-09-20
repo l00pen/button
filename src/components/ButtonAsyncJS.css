@@ -1,4 +1,4 @@
-.animate-object-wrapper {
+.async-container {
   min-height: 1rem;
   min-width: 1rem;
   align-items: center;
@@ -11,7 +11,7 @@
   transition: all 0.5s ease-in;
 }
 
-.animate-object {
+.async-wrapper {
   width: 1rem;
   height: 1rem;
   margin: 0 auto;
@@ -19,8 +19,8 @@
   vertical-align: middle;
 }
 
-.animate-object::before,
-.animate-object::after {
+.async-wrapper::before,
+.async-wrapper::after {
   box-sizing: border-box;
   content: '';
   position: absolute;
@@ -28,51 +28,57 @@
   height: 100%;
 }
 
-.animate-circle {
+.loading {
   background-color: transparent;
   outline: 1px solid transparent; /* firefox */
   transition: all 1s ease-in;
 }
 
-.animate-circle::before {
+.loading::before {
   border-radius: 50%;
-  border: 0.1rem solid transparent;
+  border: 2px solid transparent;
   border-bottom-color: coral;
-  width: 100%;
-  height: 100%;
   left: 0;
   top: 0;
 }
 
-.animate-circle.animation-start {
+.loading.animation-start {
   animation: spin 1s infinite linear;
   animation-fill-mode: both;
 }
 
-.animate-circle.animation-end {
+.loading.animation-end {
   animation: spinEnd 0.2s 1 linear;
   animation-fill-mode: both;
 }
 
-.animate-circle.animation-end::before {
+.loading.animation-end::before {
   animation: width 0.5s ease-out 0.2s;
   animation-fill-mode: both;
 }
 
-.animate-circle.animation-end::after {
+.loading.animation-end::after {
   width: 100%;
   height: 0;
   right: 44%;
   bottom: 0;
-  border: 0.1rem solid transparent;
+  border: 2px solid transparent;
   animation: height 0.5s ease-in 0.2s;
   animation-fill-mode: both;
+}
+
+.label {
+  margin: 0px;
+  font-size: 1rem;
+  opacity: 1;
+  transition: font-size 0s ease-in 0.25s,
+              opacity 0.3s ease-in 0.25s;
 }
 
 @keyframes width {
   0% {
     border-radius: 50%;
-    border: 0.1rem solid transparent;
+    border: 2px solid transparent;
     border-bottom-color: coral;
     width: 100%;
     height: 100%;

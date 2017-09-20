@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+import Button from './Button';
 import { withDelayedSuccess } from './withDelayedSuccess';
 
-import * as styles from './AsyncJS.css';
+import * as styles from './ButtonAsyncJS.css';
 
 const ANIMATION_NONE = '';
 const ANIMATION_START = 'animation-start';
@@ -12,11 +13,12 @@ const ANIMATION_END = 'animation-end';
 
 const SUCCESS_ANIMATION_LENGTH = 2000;
 
-class AsyncJS extends React.Component {
+class ButtonAsyncJS extends React.Component {
   static propTypes = {
     label: PropTypes.string,
     loading: PropTypes.bool,
     success: PropTypes.bool,
+    onClick: PropTypes.func,
   }
 
   constructor(props) {
@@ -60,22 +62,27 @@ class AsyncJS extends React.Component {
 
   render() {
     const { animationClass } = this.state;
-    const { label } = this.props;
+    const { label, onClick } = this.props;
     const showLabel = animationClass === ANIMATION_NONE;
     return (
-      <div className={cx(styles.animateObjectWrapper)}>
-        { !showLabel &&
-          <div
-            className={cx(styles.animateObject, styles.animateCircle, styles[animationClass])}
-            ref={(node) => { this.loadingNode = node; }}
-          />
-        }
-        { showLabel &&
-          <span className={cx(styles.actionButtonLabel)}>{label}</span>
-        }
-      </div>
+      <Button
+        className={cx({ [styles.success]: animationClass === ANIMATION_END })}
+        onClick={onClick}
+      >
+        <div className={cx(styles.asyncContainer)}>
+          { !showLabel &&
+            <div
+              className={cx(styles.asyncWrapper, styles.loading, styles[animationClass])}
+              ref={(node) => { this.loadingNode = node; }}
+            />
+          }
+          { showLabel &&
+            <span className={cx(styles.label)}>{label}</span>
+          }
+        </div>
+      </Button>
     );
   }
 }
 
-export default withDelayedSuccess(AsyncJS);
+export default withDelayedSuccess(ButtonAsyncJS);

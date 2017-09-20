@@ -1,14 +1,9 @@
 import Button from './Button';
-import AsyncCSS from './AsyncCSS';
-import AsyncJS from './AsyncJS';
-import ButtonAsync, {
-  ButtonAsyncWithDelayedSuccess,
-} from './ButtonAsync';
+import ButtonAsyncCSS from './ButtonAsyncCSS';
+import ButtonAsyncJS from './ButtonAsyncJS';
 
 export {
-  AsyncCSS,
-  AsyncJS,
   Button,
-  ButtonAsync,
-  ButtonAsyncWithDelayedSuccess,
+  ButtonAsyncCSS,
+  ButtonAsyncJS,
 };

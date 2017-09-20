@@ -25,10 +25,11 @@ export function withDelayedSuccess(Component) {
         setTimeout(() => {
           this.setState({
             success: false,
-          }, this.forceUpdate);
+          });
         }, SUCCESS_ANIMATION_LENGTH);
       }
     }
+
     render() {
       return (
         <Component
