@@ -116,14 +116,14 @@ class App extends React.Component {
           <Button onClick={this.clickHandler}>
             <span>{this.state.button.label}</span>
           </Button>
-          <p>Button with success animation with only react and css</p>
+          <p>Button with loading animation and success animation.</p>
           <ButtonAsyncCSS
             onClick={this.clickCSSHandler}
             success={this.state.buttonCSS.success}
             label={this.state.buttonCSS.label}
             loading={this.state.buttonCSS.loading}
           />
-          <p>Button with success animation with animation event</p>
+          <p>Button with loading animation tweening into success animation.</p>
           <ButtonAsyncJS
             label={'Click me!'}
             loading={this.state.buttonJS.loading}

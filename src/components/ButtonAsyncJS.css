@@ -7,7 +7,7 @@
 }
 
 .success {
-  background-color: #004d5f;
+  background-color: #19988c;
   transition: all 0.5s ease-in;
 }
 
@@ -50,6 +50,7 @@
 .loading.animation-end {
   animation: spinEnd 0.2s 1 linear;
   animation-fill-mode: both;
+
 }
 
 .loading.animation-end::before {
@@ -82,7 +83,7 @@
   0% {
     border-radius: 50%;
     border: 0.125em solid transparent;
-    border-bottom-color: coral;
+    border-bottom-color: white;
     width: 100%;
     height: 100%;
     left: 0;
@@ -94,15 +95,15 @@
     top: initial;
     left: 0.125em;
     width: 0.5em;
-    border-bottom-color: coral;
     border-radius: 0;
+    border-bottom-color: white;
   }
 }
 
 @keyframes height {
   to {
     height: 1em;
-    border-right-color: coral;
+    border-right-color: white;
   }
 }
 
@@ -113,5 +114,6 @@
 @keyframes spinEnd {
   to {
     transform: rotate(50deg);
+    border-bottom-color: white;
   }
 }
