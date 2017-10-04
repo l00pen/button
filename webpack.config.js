@@ -1,75 +1,72 @@
-const webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-const webpackConfig = {
-  entry: `${__dirname}/app/app.js`,
-  context: `${__dirname}/app/components`,
+module.exports = {
+  context: path.resolve(__dirname, './src'),
+  entry: {
+    app: './main.js',
+  },
   output: {
-    path: `${__dirname}/dist`,
-    filename: 'app.js',
+    filename: '[name].js',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
   },
-  target: 'web',
-  module: {
-    preLoaders: [
-      {
-        test: /.js?$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react', 'stage-2'],
-        },
-      },
-    ],
-    loaders: [
-      {
-        test: /.js?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react', 'stage-2'],
-        },
-      },
-      {
-        test: /\.scss$/,
-        loaders: [
-          'style',
-          'css',
-          'autoprefixer?browsers=last 3 versions',
-          'sass?outputStyle=expanded',
-        ],
-      },
-    ],
-  },
-  extensions: ['', '.js'],
   resolve: {
-    modulesDirectories: [
+    modules: [
+      path.resolve(__dirname, './src'),
       'node_modules',
     ],
-    extensions: ['', '.json', '.js'],
-    root: `${__dirname}/app`,
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-    }),
-    new ExtractTextPlugin('styles.css'),
-  ],
+  module: {
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.js(x)?$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: ['env', 'react', 'stage-2'] },
+        }],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: true,
+              localIdentName: '[path][name]__[local]',
+            },
+          },
+          'postcss-loader',
+        ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+        },
+      },
+    ],
+  },
+  plugins: [new HtmlWebpackPlugin({
+    title: 'Hej hej',
+    template: 'index.ejs',
+    inject: 'body',
+  })],
   devServer: {
-    contentBase: `${__dirname}/app`,
+    contentBase: path.resolve(__dirname, './dist'),
+    historyApiFallback: true,
     hot: true,
+    inline: true,
+  },
+  node: {
+    console: false,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
   },
 };
-
-if (isProduction) {
-  webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    sourceMap: false,
-    mangle: false,
-    beautify: true,
-    'screw-ie8': true,
-    compress: true,
-  }));
-}
-
-module.exports = webpackConfig;

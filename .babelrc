@@ -1,4 +1,13 @@
 {
-  "presets": ["es2015", "react"],
-  "plugins": ["transform-runtime"]
+  "presets": [
+    "env",
+    "react",
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-decorators",
+    "transform-react-constant-elements",
+    "transform-react-inline-elements"
+  ]
 }

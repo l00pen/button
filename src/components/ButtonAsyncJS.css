@@ -1,0 +1,119 @@
+.async-container {
+  min-height: 1em;
+  min-width: 1em;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.success {
+  background-color: #19988c;
+  transition: all 0.5s ease-in;
+}
+
+.async-wrapper {
+  width: 1em;
+  height: 1em;
+  margin: 0 auto;
+  position: relative;
+  vertical-align: middle;
+}
+
+.async-wrapper::before,
+.async-wrapper::after {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.loading {
+  background-color: transparent;
+  outline: 1px solid transparent; /* firefox */
+  transition: all 1s ease-in;
+}
+
+.loading::before {
+  border-radius: 50%;
+  border: 0.125em solid transparent;
+  border-bottom-color: coral;
+  left: 0;
+  top: 0;
+}
+
+.loading.animation-start {
+  animation: spin 1s infinite linear;
+  animation-fill-mode: both;
+}
+
+.loading.animation-end {
+  animation: spinEnd 0.2s 1 linear;
+  animation-fill-mode: both;
+
+}
+
+.loading.animation-end::before {
+  border-width: 0 0 0.125em 0;
+  transition: all 0.5s ease-out;
+  animation: width 0.5s ease-out 0.2s;
+  animation-fill-mode: both;
+}
+
+.loading.animation-end::after {
+  width: 1em;
+  height: 0;
+  right: 5.5px;
+  bottom: 0;
+  border: solid transparent;
+  border-width: 0 0.125em 0.125em 0;
+  animation: height 0.5s ease-in 0.2s;
+  animation-fill-mode: both;
+}
+
+.label {
+  margin: 0px;
+  font-size: inherit;
+  opacity: 1;
+  transition: font-size 0s ease-in 0.25s,
+              opacity 0.3s ease-in 0.25s;
+}
+
+@keyframes width {
+  0% {
+    border-radius: 50%;
+    border: 0.125em solid transparent;
+    border-bottom-color: white;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  100% {
+    bottom: 0px;
+    top: initial;
+    left: 0.125em;
+    width: 0.5em;
+    border-radius: 0;
+    border-bottom-color: white;
+  }
+}
+
+@keyframes height {
+  to {
+    height: 1em;
+    border-right-color: white;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinEnd {
+  to {
+    transform: rotate(50deg);
+    border-bottom-color: white;
+  }
+}

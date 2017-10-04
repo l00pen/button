@@ -1,0 +1,109 @@
+
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes width {
+  to {
+    width: 0.5em;
+    border-bottom-color: #fff;
+  }
+}
+
+@keyframes height {
+  to {
+    height: 1em;
+    border-right-color: #fff;
+  }
+}
+
+.success {
+  background-color: #19988c;
+  transition: all 0.5s ease-in;
+}
+
+.container {
+  min-height: 1em;
+  min-width: 1em;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.async-container {
+  width: 1em;
+  height: 1em;
+  margin: 0 auto;
+  position: relative;
+  vertical-align: middle;
+}
+
+.async-container::before,
+.async-container::after {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-icon {
+  background-color: transparent;
+  animation: spin 1s infinite linear;
+  animation-fill-mode: both;
+  transition: all 1s ease-in;
+}
+
+.loading-icon::before {
+  border-radius: 50%;
+  border: 0.125em solid transparent;
+  border-top-color: coral;
+  left: 0;
+  top: 0;
+}
+
+.success-icon {
+  background-color: transparent;
+  transform: rotate(45deg);
+  transition: all 1s ease-in;
+  width: 1em;
+  height: 1em;
+}
+
+.success-icon::before,
+.success-icon::after {
+  border: solid transparent;
+  border-width: 0 0.125em 0.125em 0;
+  height: 0;
+  width: 0;
+}
+
+.success-icon::before {
+  left: 0.25em;
+  bottom: 0.125em;
+  animation: width 0.25s ease-out 0s;
+  animation-fill-mode: both;
+}
+
+.success-icon::after {
+  bottom: 0.125em;
+  right: 0.25em;
+  animation: height 0.25s ease-in 0.25s;
+  animation-fill-mode: both;
+}
+
+.label {
+  margin: 0px;
+  opacity: 1;
+  transition: font-size 0s ease-in,
+              opacity 0.3s ease-in;
+}
+
+.label.success {
+  opacity: 0;
+  font-size: 0px;
+  transition: all 1s ease-in;
+}

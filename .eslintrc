@@ -3,13 +3,19 @@
   "env": {
     "browser": true,
     "node": true,
-    "jasmine": true
   },
+  "plugins": [
+    "babel",
+    "class-property",
+  ],
+  "parser": "babel-eslint",
   "settings": {
     import/resolver: "webpack"
   },
   "rules": {
     "react/jsx-filename-extension": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "class-property/rule-name": 0,
+    "react/prefer-stateless-function": [2, { "ignorePureComponents": true }]
   }
 }
