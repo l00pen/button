@@ -1,18 +1,28 @@
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 import thunk from './middleware/redux-thunk';
 
-import actionButtonAnimation from './reducers/action-button-animation';
+import buttonSimpleReducer from './reducers/buttonSimpleReducer';
+import buttonCSSReducer from './reducers/buttonCSSReducer';
+import buttonJSReducer from './reducers/buttonJSReducer';
 
 const rootReducer = combineReducers({
-  actionButtonAnimation,
+  button: buttonSimpleReducer,
+  buttonCSS: buttonCSSReducer,
+  buttonJS: buttonJSReducer,
 });
 
 const middlewares = [thunk];
 
 let store;
 
+const INITIAL_STATE = {
+  button: {},
+  buttonCSS: {},
+  buttonJS: {},
+};
+
 export default {
-  get(initialState = {}) {
+  get(initialState = INITIAL_STATE) {
     if (!store) {
       store = createStore(rootReducer, initialState, applyMiddleware(...middlewares));
     }
