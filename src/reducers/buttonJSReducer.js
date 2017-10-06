@@ -18,6 +18,11 @@ export default function buttonJSReducer(state = initialState, action) {
         loading: false,
         success: true,
       };
+    case 'BUTTON_JS_SUCCESS_RESET':
+      return {
+        ...state,
+        success: false,
+      };
     case 'BUTTON_JS_CLICK_ERROR':
       return {
         ...state,

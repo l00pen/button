@@ -18,6 +18,11 @@ export default function buttonCSSReducer(state = initialState, action) {
         loading: false,
         success: true,
       };
+    case 'BUTTON_CSS_SUCCESS_RESET':
+      return {
+        ...state,
+        success: false,
+      };
     case 'BUTTON_CSS_CLICK_ERROR':
       return {
         ...state,

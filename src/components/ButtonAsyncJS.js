@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import Button from './Button';
-import { withDelayedSuccess } from './withDelayedSuccess';
 
 import * as styles from './ButtonAsyncJS.css';
 
@@ -85,4 +84,4 @@ class ButtonAsyncJS extends React.Component {
   }
 }
 
-export default withDelayedSuccess(ButtonAsyncJS);
+export default ButtonAsyncJS;

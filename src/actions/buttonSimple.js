@@ -19,9 +19,11 @@ export function buttonSimpleClickHandlerError() {
 export function buttonSimpleClickHandler() {
   return (dispatch) => {
     dispatch(buttonSimpleClickHandlerLoading());
-    return Promise.resolve().then(
-      () => dispatch(buttonSimpleClickHandlerSuccess()),
-      () => dispatch(buttonSimpleClickHandlerError()),
-    );
+    setTimeout(() => {
+      Promise.resolve().then(
+        () => dispatch(buttonSimpleClickHandlerSuccess()),
+        () => dispatch(buttonSimpleClickHandlerError()),
+      );
+    }, 2000);
   };
 }

@@ -13,7 +13,7 @@ import {
 
 import '../css/master.css';
 
-class App extends React.Component {
+class App extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.shape().isRequired,
     button: PropTypes.shape().isRequired,
@@ -23,7 +23,6 @@ class App extends React.Component {
 
   render() {
     const { actions, button, buttonCSS, buttonJS } = this.props;
-
     return (
       <div style={{ width: '30%', margin: '50px auto 0' }}>
         <p>Button no animation</p>
@@ -33,16 +32,12 @@ class App extends React.Component {
         <p>Button with loading animation and success animation.</p>
         <ButtonAsyncCSS
           onClick={actions.buttonCSSClickHandler}
-          success={buttonCSS.success}
-          label={buttonCSS.label}
-          loading={buttonCSS.loading}
+          {...buttonCSS}
         />
         <p>Button with loading animation tweening into success animation.</p>
         <ButtonAsyncJS
-          label={'Click me!'}
-          loading={buttonJS.loading}
           onClick={actions.buttonJSClickHandler}
-          success={buttonJS.success}
+          {...buttonJS}
         />
       </div>
     );
@@ -58,7 +53,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return state;
+  return {
+    ...state
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
