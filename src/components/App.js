@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../actions';
+import Actions from '../actions';
 
 import {
   Button,
@@ -13,90 +14,25 @@ import {
 import '../css/master.css';
 
 class App extends React.Component {
-  clickHandler = () => {
-    const tmpLabel = this.state.button.label;
-    this.setState({
-      button: {
-        label: 'loading...',
-      },
-    });
-
-    setTimeout(() => {
-      this.setState({
-        button: {
-          label: tmpLabel,
-        },
-      });
-    }, 2000);
-  }
-
-  clickCSSHandler = () => {
-    // faking an async success request
-    this.setState({
-      buttonCSS: {
-        ...this.state.buttonCSS,
-        loading: !this.state.buttonCSS.loading,
-      },
-    });
-
-    setTimeout(() => {
-      this.setState({
-        buttonCSS: {
-          ...this.state.buttonCSS,
-          loading: !this.state.buttonCSS.loading,
-          success: true,
-        },
-      });
-      setTimeout(() => {
-        this.setState({
-          buttonCSS: {
-            ...this.state.buttonCSS,
-            success: false,
-          },
-        });
-      }, 2000);
-    }, 2000);
-  }
-
-  clickJSHandler = () => {
-    // faking an async success request
-    this.setState({
-      buttonJS: {
-        ...this.state.buttonJS,
-        loading: !this.state.buttonJS.loading,
-      },
-    });
-
-    setTimeout(() => {
-      this.setState({
-        buttonJS: {
-          ...this.state.buttonJS,
-          loading: !this.state.buttonJS.loading,
-          success: true,
-        },
-      });
-      setTimeout(() => {
-        this.setState({
-          buttonJS: {
-            ...this.state.buttonJS,
-            success: false,
-          },
-        });
-      }, 2000);
-    }, 2000);
+  static propTypes = {
+    actions: PropTypes.shape().isRequired,
+    button: PropTypes.shape().isRequired,
+    buttonJS: PropTypes.shape().isRequired,
+    buttonCSS: PropTypes.shape().isRequired,
   }
 
   render() {
-    const { button, buttonCSS, buttonJS } = this.props;
+    const { actions, button, buttonCSS, buttonJS } = this.props;
+
     return (
       <div style={{ width: '30%', margin: '50px auto 0' }}>
         <p>Button no animation</p>
-        <Button onClick={this.clickHandler}>
+        <Button onClick={actions.buttonSimpleClickHandler}>
           <span>{button.label}</span>
         </Button>
         <p>Button with loading animation and success animation.</p>
         <ButtonAsyncCSS
-          onClick={this.clickCSSHandler}
+          onClick={actions.buttonCSSClickHandler}
           success={buttonCSS.success}
           label={buttonCSS.label}
           loading={buttonCSS.loading}
@@ -105,7 +41,7 @@ class App extends React.Component {
         <ButtonAsyncJS
           label={'Click me!'}
           loading={buttonJS.loading}
-          onClick={this.clickJSHandler}
+          onClick={actions.buttonJSClickHandler}
           success={buttonJS.success}
         />
       </div>

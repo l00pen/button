@@ -15,14 +15,8 @@ const middlewares = [thunk];
 
 let store;
 
-const INITIAL_STATE = {
-  button: {},
-  buttonCSS: {},
-  buttonJS: {},
-};
-
 export default {
-  get(initialState = INITIAL_STATE) {
+  get(initialState = {}) {
     if (!store) {
       store = createStore(rootReducer, initialState, applyMiddleware(...middlewares));
     }
